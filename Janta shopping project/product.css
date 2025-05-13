@@ -1,0 +1,50 @@
+p{
+    font-style: oblique;
+    text-emphasis-color: white;
+    color: antiquewhite;
+}
+* {
+  color: antiquewhite;
+}
+
+body {
+  background-color: black;
+}
+
+.special-text {
+  display: inline-block;
+  color: black; /* ✅ This overrides the '*' selector */
+  font-weight: 400;
+  font-style: oblique;
+  text-align: center;
+  margin: 20px;
+  margin-left: 670px;
+  padding: 2px;
+  
+  /* ✅ Fix this border - set style and width properly */
+  border: 1px solid bisque;
+
+  background-color: rgb(86, 64, 39);
+}
+.buttons {
+  text-align: center;
+  margin: 20px;
+}
+
+.shop-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: bisque;
+  color: brown;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border: 2px solid brown;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.shop-link:hover {
+  background-color: brown;
+  color: white;
+}
