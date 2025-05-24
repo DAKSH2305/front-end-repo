@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stunning Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="logo">✨ MyBrand</div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Crafting <span class="highlight">Beautiful</span> Experiences</h1>
+      <p>I’m a front‑end developer who loves blending creativity with code.</p>
+      <a href="#projects" class="cta">View My Work</a>
+    </div>
+  </section>
+
+  <!-- PROJECT GRID -->
+  <section id="projects" class="projects">
+    <h2>Featured Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-overlay"></div>
+        <img src="https://source.unsplash.com/collection/190727/400x300" alt="Project 1">
+        <h3>Project One</h3>
+      </div>
+      <div class="card">
+        <div class="card-overlay"></div>
+        <img src="https://source.unsplash.com/collection/190728/400x300" alt="Project 2">
+        <h3>Project Two</h3>
+      </div>
+      <div class="card">
+        <div class="card-overlay"></div>
+        <img src="https://source.unsplash.com/collection/190729/400x300" alt="Project 3">
+        <h3>Project Three</h3>
+      </div>
+      <div class="card">
+        <div class="card-overlay"></div>
+        <img src="https://source.unsplash.com/collection/190730/400x300" alt="Project 4">
+        <h3>Project Four</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <p>I merge elegant design with performant code to build interfaces that delight users and drive engagement. When I’m not coding, you’ll find me exploring 3D art or hiking off‑grid.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contact" class="contact">
+    <h2>Let’s Connect</h2>
+    <form action="#" class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit" class="cta">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 MyBrand. Designed with 💜 by You.</p>
+    <script>
+    const btn = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+    btn.addEventListener('click', () => nav.classList.toggle('open'));
+    </script>
+
+  </footer>
+</body>
+</html>

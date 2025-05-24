@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Mode Pure CSS</title>
+  <style>
+    /* Hide checkbox */
+    #toggle-dark {
+      display: none;
+    }
+
+    /* Light mode default */
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial;
+      text-align: center;
+      transition: 0.3s;
+      padding: 50px;
+    }
+
+    /* Style button using label */
+    label {
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    /* Dark mode styles applied when checkbox is checked */
+    #toggle-dark:checked ~ .content {
+      background-color: black;
+      color: white;
+    }
+
+    .content {
+      padding: 100px;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden checkbox -->
+  <input type="checkbox" id="toggle-dark">
+
+  <!-- Label as a button -->
+  <label for="toggle-dark">Toggle Dark Mode</label>
+
+  <!-- Main content inside a wrapper div -->
+  <div class="content">
+    <h1>Welcome!</h1>
+    <p>Click the button above to toggle dark mode using only HTML and CSS.</p>
+  </div>
+
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: wheat;
+            padding: 0.1rem;
+            margin: 0.1rem;
+        }
+        .header{
+            
+        }
+    </style>
+
+</head>
+<body>
+    <div class="page">
+        <div class="header"> 
+            <h1 class="heading1"> welcome jii</h1>
+            <button> dark mode</button>
+        </div>
+      
+        <br>
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ut numquam reprehenderit voluptatem maxime culpa autem maiores alias rem, vero repudiandae tempore, suscipit architecto pariatur consectetur. Quaerat doloremque explicabo fuga.
+        Ex reiciendis animi dignissimos temporibus mollitia error dicta quia, corporis blanditiis explicabo obcaecati illo eos in porro perferendis ab! Corrupti, in sit! Saepe, quidem aperiam? Omnis ut cumque ipsa dolor.
+        Necessitatibus rem ducimus exercitationem ea aliquid corrupti, qui architecto obcaecati cum odio consequuntur magnam nemo illum vitae eaque eum mollitia quisquam non, ut vero labore nisi perspiciatis cumque quae. Quis?</p>
+        <br> 
+    </div>
+
+    
+</body>
+</html>
+-->
