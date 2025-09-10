@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Password Meter</title>
+    <link rel="stylesheet" href="stylepass.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Check & Save Your Password</h1>
+        <label for="password">Enter a Strong Password:</label>
+        <input type="password" id="password" placeholder="Your password...">
+        
+        <div class="strength-meter">
+            <div class="strength-bar"></div>
+        </div>
+        <div class="feedback" id="feedback">Please start typing...</div>
+        
+        <!-- New Save Button - Disabled by default -->
+         <button id="checkbtn">check</button>
+        <button id="saveBtn" disabled>Save Password to File</button>
+    </div>
+    <script src="passcheck_logic.js"></script>
+</body>
+</html>
