@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application - By Daksh</title>
+    <link rel="stylesheet" href="style_quiz.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Quiz Application</h2>
+        
+        <div class="user-input">
+            <input type="text" id="userName" placeholder="Enter your name"/>
+        </div>
+        
+        <div class="instructions">
+            <p>1. You will be asked 5 questions one after another</p>
+            <p>2. Each question will have a time limit of 10 seconds.</p>
+            <p>3. You can't select option after time is over</p>
+        </div>
+        
+        <div class="btn">
+            <button class="startquiz">Start Quiz</button>
+        </div>
+    </div>
+    <div class="containerplayground">
+        <div class="quizHeader">
+            <div><span id="questionCount">1</span>of 5 Question</div>
+            <div>
+                <i class="fa-solid fa-stopwatch"></i>
+                <span id="questionTimer">10</span>
+            </div>
+        </div>
+        <div class="quizBody">
+            <h3 id="question"></h3>
+            <ul id="quizOptions"></ul>
+        </div>
+
+        <div class="loader">
+            <i class="fa-solid fa-gear fa-spin"></i>
+        </div>
+
+        <div class="quizFooter">
+            <button id="nextButton" disabled>Next</button>
+        </div>
+
+    </div>
+
+    <script src="quiz_script.js"></script>
+</body>
+</html>
