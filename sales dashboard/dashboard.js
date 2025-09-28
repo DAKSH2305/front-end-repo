@@ -1,22 +1,17 @@
-/* dashboard.js for the provided HTML
-   Requirements:
-   - <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> in HTML head
-   - <script src="dashboard.js" defer></script> after CSS
-   - Works with the given DOM structure and classes
-*/
+
 
 const API_URL = 'https://68d424b8214be68f8c6887f1.mockapi.io/api/eureka/tech/task/sales';
 
-// ---------- Utilities ----------
+
 function parseDateFlexible(d) {
   if (typeof d === 'number') return new Date(d * 1000);
   const ts = Date.parse(d);
   return Number.isNaN(ts) ? new Date(NaN) : new Date(ts);
-} // [web:71]
+} 
 
 function ymKey(dt) {
   return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}`;
-} // [web:56]
+} 
 
 function formatCurrency(n) {
   return n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
@@ -34,7 +29,7 @@ function toCSV(rows) {
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
   return [headers.join(','), ...rows.map(r => headers.map(h => esc(r[h])).join(','))].join('\n');
-} // [web:62][web:37]
+} 
 
 function download(filename, data, mime) {
   const blob = new Blob([data], { type: mime });
@@ -46,9 +41,8 @@ function download(filename, data, mime) {
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
-} // [web:43]
+} 
 
-// ---------- Data fetching / normalization ----------
 async function fetchSales() {
   const res = await fetch(API_URL);
   const arr = await res.json();
@@ -64,9 +58,8 @@ async function fetchSales() {
       return { sale_id, date, region, product, quantity, unit_price, total_price };
     })
     .filter(r => !Number.isNaN(r.date.getTime()));
-} // [web:71]
-
-// ---------- Aggregations ----------
+}
+-
 function kpis(rows) {
   const revenue = rows.reduce((s, r) => s + r.total_price, 0);
   const orders = rows.length;
@@ -101,7 +94,7 @@ function topProducts(rows, by = 'revenue', n = 5) {
   return list.slice(0, n);
 }
 
-// ---------- Rendering ----------
+
 let lineChart, doughnutChart;
 
 function ensureCanvas(containerSel) {
@@ -146,7 +139,7 @@ function renderLine(labels, values) {
       }
     });
   }
-} // [web:52][web:71]
+} 
 
 function renderRegion(labels, values) {
   const canvas = ensureCanvas('.panel.split .panel.half .chart-area');
@@ -175,7 +168,7 @@ function renderRegion(labels, values) {
       }
     });
   }
-} // [web:52][web:71]
+} 
 
 function renderKPIs(metrics) {
   const kpiEls = document.querySelectorAll('.kpi .metric');
@@ -221,7 +214,6 @@ function renderTable(rows, limit = 50) {
   });
 }
 
-// ---------- Filters ----------
 function applyFilters(allRows) {
   const region = document.getElementById('region')?.value || 'all';
   const product = document.getElementById('product')?.value || 'all';
@@ -237,7 +229,7 @@ function applyFilters(allRows) {
   });
 }
 
-// ---------- Export ----------
+
 function exportCSV(rows) {
   const out = rows.map(r => ({
     sale_id: r.sale_id,
@@ -249,10 +241,9 @@ function exportCSV(rows) {
     total_price: r.total_price
   }));
   download('sales_filtered.csv', toCSV(out), 'text/csv');
-} // [web:37][web:62][web:43]
+} 
 
 function exportXLSX(rows) {
-  // Simple approach: CSV with XLSX mime/extension for spreadsheet apps
   const out = rows.map(r => ({
     sale_id: r.sale_id,
     date: r.date.toISOString(),
@@ -263,15 +254,15 @@ function exportXLSX(rows) {
     total_price: r.total_price
   }));
   download('sales_filtered.xlsx', toCSV(out), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-} // [web:43]
+}
 
-// ---------- Init ----------
+
 document.addEventListener('DOMContentLoaded', async () => {
   const allRows = await fetchSales();
 
   let filtered = applyFilters(allRows);
 
-  // Initial compute + render
+ 
   renderKPIs(kpis(filtered));
   const m = monthlySeries(filtered);
   renderLine(m.labels, m.values);
@@ -280,7 +271,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderTop(topProducts(filtered, 'revenue', 5), 'revenue');
   renderTable(filtered);
 
-  // Apply
   document.querySelector('.filters .btn.primary')?.addEventListener('click', () => {
     filtered = applyFilters(allRows);
     renderKPIs(kpis(filtered));
@@ -294,7 +284,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderTable(filtered);
   }); // [web:74]
 
-  // Reset
+
   document.querySelector('.filters .btn.ghost')?.addEventListener('click', () => {
     const r = document.getElementById('region'); if (r) r.value = 'all';
     const p = document.getElementById('product'); if (p) p.value = 'all';
@@ -310,20 +300,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     const by = rankBySel && rankBySel.value.toLowerCase().includes('quantity') ? 'quantity' : 'revenue';
     renderTop(topProducts(filtered, by, 5), by);
     renderTable(filtered);
-  }); // [web:72][web:74]
+  }); 
 
-  // Rank by change
   document.querySelector('.panel.half:nth-of-type(2) .panel-actions select')
     ?.addEventListener('change', (e) => {
       const by = e.target.value.toLowerCase().includes('quantity') ? 'quantity' : 'revenue';
       renderTop(topProducts(filtered, by, 5), by);
-    }); // [web:74]
+    }); 
 
-  // Export buttons
+  
   const exportBtns = document.querySelectorAll('.filters .export .btn');
   exportBtns.forEach(btn => {
     const txt = btn.textContent?.toLowerCase() || '';
     if (txt.includes('csv')) btn.addEventListener('click', () => exportCSV(filtered));
     if (txt.includes('xlsx')) btn.addEventListener('click', () => exportXLSX(filtered));
-  }); // [web:74][web:80]
+  });
 });
+
