@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sales Dashboard</title>
+  <link rel="stylesheet" href="style_dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="header">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">📊</span>
+        <h1>Sales Dashboard</h1>
+      </div>
+
+      <form class="filters" aria-label="Dashboard filters">
+        <div class="filter">
+          <label for="region">Region</label>
+          <select id="region" name="region">
+            <option value="all">All regions</option>
+            <option value="na">North America</option>
+            <option value="eu">Europe</option>
+            <option value="apac">APAC</option>
+            <option value="latam">LATAM</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label for="product">Product</label>
+          <select id="product" name="product">
+            <option value="all">All products</option>
+            <option value="p1">Product A</option>
+            <option value="p2">Product B</option>
+            <option value="p3">Product C</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label for="date-from">From</label>
+          <input id="date-from" name="date-from" type="date" />
+        </div>
+
+        <div class="filter">
+          <label for="date-to">To</label>
+          <input id="date-to" name="date-to" type="date" />
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn primary">Apply</button>
+          <button type="button" class="btn ghost">Reset</button>
+          <div class="export">
+            <button type="button" class="btn">Export CSV</button>
+            <button type="button" class="btn">Export XLSX</button>
+          </div>
+        </div>
+      </form>
+    </header>
+
+    <aside class="sidebar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a class="active" href="#">Overview</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </nav>
+      <div class="tips">
+        <h3>Tips</h3>
+        <p>Use the filters above, then click Apply to update widgets and charts.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="kpis" aria-label="Key metrics">
+        <article class="kpi">
+          <h2>Total Revenue</h2>
+          <p class="metric">$1,245,870</p>
+          <p class="delta up">+8.2% vs last period</p>
+        </article>
+
+        <article class="kpi">
+          <h2>Total Orders</h2>
+          <p class="metric">18,324</p>
+          <p class="delta up">+3.5% vs last period</p>
+        </article>
+
+        <article class="kpi">
+          <h2>Avg. Order Value</h2>
+          <p class="metric">$68.04</p>
+          <p class="delta down">-1.1% vs last period</p>
+        </article>
+
+        <article class="kpi">
+          <h2>Conversion Rate</h2>
+          <p class="metric">2.9%</p>
+          <p class="delta up">+0.2pp vs last period</p>
+        </article>
+      </section>
+
+      <section class="panel chart line" aria-label="Sales trends over time">
+        <header class="panel-header">
+          <h2>Sales Over Time</h2>
+          <div class="panel-actions">
+            <select aria-label="Time granularity">
+              <option>Monthly</option>
+              <option>Weekly</option>
+              <option>Daily</option>
+              <option>Quarterly</option>
+            </select>
+          </div>
+        </header>
+        <div class="chart-area" role="img" aria-label="Line chart placeholder for sales trend">
+          <!-- Integrate Chart.js/ApexCharts here -->
+          <div class="placeholder"><span>Line chart placeholder</span></div>
+        </div>
+      </section>
+
+      <section class="panel split" aria-label="Region distribution and top products">
+        <div class="panel half" aria-label="Sales distribution by region">
+          <header class="panel-header">
+            <h2>Sales by Region</h2>
+            <div class="panel-actions">
+              <select aria-label="Chart type">
+                <option>Pie</option>
+                <option>Bar</option>
+              </select>
+            </div>
+          </header>
+          <div class="chart-area" role="img" aria-label="Pie or bar chart placeholder for region distribution">
+            <div class="placeholder donut"><span>Region chart</span></div>
+          </div>
+          <ul class="legend">
+            <li><span class="swatch na"></span>North America</li>
+            <li><span class="swatch eu"></span>Europe</li>
+            <li><span class="swatch apac"></span>APAC</li>
+            <li><span class="swatch latam"></span>LATAM</li>
+          </ul>
+        </div>
+
+        <div class="panel half" aria-label="Top 5 products">
+          <header class="panel-header">
+            <h2>Top Products</h2>
+            <div class="panel-actions">
+              <select aria-label="Rank by">
+                <option>Revenue</option>
+                <option>Quantity</option>
+              </select>
+            </div>
+          </header>
+          <ol class="top-list">
+            <li>
+              <div class="item">
+                <span class="name">Product A</span>
+                <span class="value">$184,230</span>
+              </div>
+              <div class="bar"><span style="width: 90%"></span></div>
+            </li>
+            <li>
+              <div class="item">
+                <span class="name">Product B</span>
+                <span class="value">$152,980</span>
+              </div>
+              <div class="bar"><span style="width: 75%"></span></div>
+            </li>
+            <li>
+              <div class="item">
+                <span class="name">Product C</span>
+                <span class="value">$126,410</span>
+              </div>
+              <div class="bar"><span style="width: 62%"></span></div>
+            </li>
+            <li>
+              <div class="item">
+                <span class="name">Product D</span>
+                <span class="value">$89,770</span>
+              </div>
+              <div class="bar"><span style="width: 44%"></span></div>
+            </li>
+            <li>
+              <div class="item">
+                <span class="name">Product E</span>
+                <span class="value">$76,220</span>
+              </div>
+              <div class="bar"><span style="width: 37%"></span></div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="panel table" aria-label="Recent sales">
+        <header class="panel-header">
+          <h2>Recent Sales</h2>
+          <div class="panel-actions">
+            <input type="search" placeholder="Search orders…" aria-label="Search orders" />
+          </div>
+        </header>
+        <div class="table-wrap" role="region" aria-label="Sales table" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Region</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2025-09-20</td>
+                <td>#10293</td>
+                <td>EU</td>
+                <td>Product A</td>
+                <td>12</td>
+                <td>$816.48</td>
+              </tr>
+              <tr>
+                <td>2025-09-19</td>
+                <td>#10292</td>
+                <td>NA</td>
+                <td>Product C</td>
+                <td>5</td>
+                <td>$340.20</td>
+              </tr>
+              <tr>
+                <td>2025-09-19</td>
+                <td>#10291</td>
+                <td>APAC</td>
+                <td>Product B</td>
+                <td>8</td>
+                <td>$672.00</td>
+              </tr>
+              <!-- Add more rows or render dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Sales Dashboard</p>
+    </footer>
+  </div>
+  <script src="dashboard.js"> </script>
+</body>
+</html>
